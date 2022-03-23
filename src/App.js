@@ -4,6 +4,7 @@ import axios from "axios";
 import MainWeather from "./components/MainWeather";
 import Loading from "./components/Loading";
 import Forecast from "./components/Forecast";
+import Credit from "./components/Credit";
 
 const App = ({ defaultPlace }) => {
    const [weatherData, setWeatherData] = useState({ ready: false });
@@ -38,7 +39,7 @@ const App = ({ defaultPlace }) => {
          setLoading(false);
       }, 2000);
 
-      return () => clearTimeout(timer)
+      return () => clearTimeout(timer);
    }, []);
 
    const getDataWeather = async () => {
@@ -61,7 +62,7 @@ const App = ({ defaultPlace }) => {
             });
          }, 1500);
 
-         return () => clearTimeout(timer)
+         return () => clearTimeout(timer);
       } catch (error) {
          console.log({ message: error.message });
       }
@@ -69,7 +70,8 @@ const App = ({ defaultPlace }) => {
 
    return (
       <main className="w-screen h-screen bg-[#1F1D36] flex flex-col items-center">
-         <>
+         <div className="w-full h-full max-w-lg flex flex-col justify-between items-center">
+            <div className="w-full">
             <Search
                search={city}
                setSearch={setCity}
@@ -77,11 +79,13 @@ const App = ({ defaultPlace }) => {
                handleSearch={getDataWeather}
             />
             {loading ? (
-               <Loading color="#e4e4e7" />
+               <div className="w-full flex justify-center">
+                  <Loading color="#e4e4e7" />
+               </div>
             ) : (
                weatherData.icon && (
                   <>
-                     <div className="w-full max-w-lg flex flex-col">
+                     <div className="w-full flex flex-col">
                         <div className="w-full px-5 py-5">
                            <MainWeather data={weatherData} />
                         </div>
@@ -90,7 +94,9 @@ const App = ({ defaultPlace }) => {
                   </>
                )
             )}
-         </>
+            </div>
+            <Credit />
+         </div>
       </main>
    );
 };

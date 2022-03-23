@@ -29,6 +29,8 @@ const Forecast = ({ data }) => {
       setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
    }, []);
 
+console.log(width)
+
    return (
       <div className="w-full px-5 py-2 flex justify-center items-center">
          {loading ? (
@@ -38,7 +40,7 @@ const Forecast = ({ data }) => {
                <motion.div
                   ref={slider}
                   drag="x"
-                  dragConstraints={{ right: 0, left: width ? -width : -212 }}
+                  dragConstraints={{ right: 0, left: -width }}
                   whileTap={{ cursor: "grabbing" }}
                   className="flex items-center justify-between gap-x-5 cursor-grab"
                >
