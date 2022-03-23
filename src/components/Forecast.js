@@ -31,7 +31,7 @@ const Forecast = ({ data }) => {
             <motion.div className="overflow-hidden">
                <motion.div
                   drag="x"
-                  dragConstraints={{ right: 1, left: -170 }}
+                  dragConstraints={{ right: 1, left: -230 }}
                   whileTap={{ cursor: "grabbing" }}
                   className="flex items-center justify-between gap-x-5 cursor-grab"
                >
