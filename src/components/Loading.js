@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactLoading from 'react-loading'
 
-const Loading = () => {
+const Loading = ({color}) => {
   return (
-    <ReactLoading type='bars' color='#333333' />
+    <ReactLoading type='bars' color={color} />
   )
 }
 
