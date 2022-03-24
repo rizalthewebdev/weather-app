@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Loading from "./Loading";
@@ -8,6 +8,12 @@ import CardForecast from "./CardForecast";
 const Forecast = ({ data }) => {
    const [forecast, setForecast] = useState([]);
    const [loading, setLoading] = useState(false);
+   const [width, setWidth] = useState(0)
+   const slider = useRef()
+
+   useEffect(() => 
+      setWidth(slider.current.scrollWidth = slider.current.offsetWidth)
+      , [data]);
 
    useEffect(() => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data?.lat}&lon=${data?.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
@@ -28,10 +34,10 @@ const Forecast = ({ data }) => {
          {loading ? (
             <Loading color="#e4e4e7" />
          ) : (
-            <motion.div className="overflow-hidden">
+            <motion.div ref={slider} className="overflow-hidden">
                <motion.div
                   drag="x"
-                  dragConstraints={{ right: 1, left: -260 }}
+                  dragConstraints={{ right: 1, left: -width }}
                   whileTap={{ cursor: "grabbing" }}
                   className="flex items-center justify-between gap-x-5 cursor-grab"
                >
