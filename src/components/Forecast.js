@@ -12,7 +12,7 @@ const Forecast = ({ data }) => {
    const slider = useRef()
 
    useEffect(() => 
-      setWidth(slider.current.scrollWidth = slider.current.offsetWidth)
+      setWidth(slider.current.scrollWidth - slider.current.offsetWidth)
       , [data]);
 
    useEffect(() => {
