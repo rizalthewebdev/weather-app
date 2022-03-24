@@ -15,8 +15,8 @@ const Forecast = ({ data }) => {
       const timer = setTimeout(() => {
          setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
       }, 1500);
-      return () => clearTimeout(timer)
-   }, [data]);
+      return () => clearTimeout(timer);
+   }, [forecast]);
 
    useEffect(() => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data?.lat}&lon=${data?.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
