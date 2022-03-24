@@ -41,7 +41,7 @@ const Forecast = ({ data }) => {
                   drag="x"
                   dragConstraints={{ right: 0, left: -width }}
                   whileTap={{ cursor: "grabbing" }}
-                  className="flex items-center justify-between gap-x-5 cursor-grab py-1 px-1 pr-2.5"
+                  className="flex items-center justify-between gap-x-5 cursor-grab py-1 px-1"
                >
                   {forecast?.map(
                      (weather, index) =>
