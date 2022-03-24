@@ -13,7 +13,7 @@ const Forecast = ({ data }) => {
 
    useEffect(() => {
       const timer = setTimeout(() => {
-         setWidth(slider.current.scrollWidth - slider.current.offsetWidth -2);
+         setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
       }, 1500);
       return () => clearTimeout(timer);
    }, [forecast]);
@@ -39,7 +39,7 @@ const Forecast = ({ data }) => {
             <motion.div ref={slider} className="overflow-hidden">
                <motion.div
                   drag="x"
-                  dragConstraints={{ right: 1, left: -width }}
+                  dragConstraints={{ right: 0, left: -width }}
                   whileTap={{ cursor: "grabbing" }}
                   className="flex items-center justify-between gap-x-5 cursor-grab"
                >
