@@ -14,7 +14,7 @@ const Forecast = ({ data }) => {
    useEffect(() => {
       const timer = setTimeout(() => {
          setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
-      }, 1500);
+      }, 1050);
       return () => clearTimeout(timer);
    }, [forecast]);
 
