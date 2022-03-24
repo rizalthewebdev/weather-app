@@ -8,12 +8,15 @@ import CardForecast from "./CardForecast";
 const Forecast = ({ data }) => {
    const [forecast, setForecast] = useState([]);
    const [loading, setLoading] = useState(false);
-   const [width, setWidth] = useState(0)
-   const slider = useRef()
+   const [width, setWidth] = useState(0);
+   const slider = useRef();
 
-   useEffect(() => 
-      setWidth(slider.current.scrollWidth - slider.current.offsetWidth)
-      , [data]);
+   useEffect(() => {
+      const timer = setTimeout(() => {
+         setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
+      }, 1500);
+      return () => clearTimeout(timer)
+   }, [data]);
 
    useEffect(() => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data?.lat}&lon=${data?.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
@@ -25,9 +28,8 @@ const Forecast = ({ data }) => {
          });
       }, 1000);
 
-      return () => clearTimeout(timer)
+      return () => clearTimeout(timer);
    }, [data?.lat, data?.lon]);
-
 
    return (
       <div className="w-full px-5 py-2 flex justify-center items-center">
